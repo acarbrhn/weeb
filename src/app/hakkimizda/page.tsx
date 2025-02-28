@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { SVGProps } from 'react'
 
 export default function AboutPage() {
   return (
@@ -8,7 +9,7 @@ export default function AboutPage() {
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold mb-4">Hakkımızda</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            20 yılı aşkın tecrübemizle Türkiye'nin önde gelen tarım
+            20 yılı aşkın tecrübemizle Türkiye&apos;nin önde gelen tarım
             işletmelerinden biri olarak, sürdürülebilir tarım uygulamalarıyla
             geleceğe yatırım yapıyoruz.
           </p>
@@ -92,7 +93,7 @@ const values = [
   {
     title: 'Sürdürülebilirlik',
     description: 'Doğal kaynakları koruyarak gelecek nesillere aktarmak',
-    icon: function LeafIcon(props: any) {
+    icon: function LeafIcon(props: SVGProps<SVGSVGElement>) {
       return (
         <svg
           {...props}
@@ -114,7 +115,7 @@ const values = [
   {
     title: 'Kalite',
     description: 'En yüksek standartlarda üretim ve hizmet sunumu',
-    icon: function StarIcon(props: any) {
+    icon: function StarIcon(props: SVGProps<SVGSVGElement>) {
       return (
         <svg
           {...props}
@@ -136,7 +137,7 @@ const values = [
   {
     title: 'İnovasyon',
     description: 'Modern teknolojiler ile sürekli gelişim',
-    icon: function LightBulbIcon(props: any) {
+    icon: function LightBulbIcon(props: SVGProps<SVGSVGElement>) {
       return (
         <svg
           {...props}

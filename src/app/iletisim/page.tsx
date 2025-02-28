@@ -43,7 +43,7 @@ export default function ContactPage() {
         message: 'Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız.',
       })
       setFormData({ name: '', email: '', phone: '', message: '' })
-    } catch (error) {
+    } catch (_error) {
       setStatus({
         type: 'error',
         message: 'Mesajınız gönderilemedi. Lütfen daha sonra tekrar deneyin.',

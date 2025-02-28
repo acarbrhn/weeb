@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { SVGProps } from 'react';
 
 export default function Home() {
   return (
@@ -64,7 +65,7 @@ const features = [
   {
     title: 'Kaliteli Ürünler',
     description: 'En yüksek kalite standartlarında üretilmiş tarım ürünleri.',
-    icon: function LeafIcon(props: any) {
+    icon: function LeafIcon(props: SVGProps<SVGSVGElement>) {
       return (
         <svg
           {...props}
@@ -86,7 +87,7 @@ const features = [
   {
     title: 'Sürdürülebilir Tarım',
     description: 'Çevre dostu ve sürdürülebilir tarım uygulamaları.',
-    icon: function EarthIcon(props: any) {
+    icon: function EarthIcon(props: SVGProps<SVGSVGElement>) {
       return (
         <svg
           {...props}
@@ -108,7 +109,7 @@ const features = [
   {
     title: 'Uzman Danışmanlık',
     description: 'Profesyonel tarım danışmanlarımızla sürekli destek.',
-    icon: function UserIcon(props: any) {
+    icon: function UserIcon(props: SVGProps<SVGSVGElement>) {
       return (
         <svg
           {...props}
