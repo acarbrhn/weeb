@@ -1,0 +1,35 @@
+import type { MDXComponents } from 'mdx/types'
+import Image from 'next/image'
+
+export function useMDXComponents(components: MDXComponents): MDXComponents {
+  return {
+    h1: ({ children }) => (
+      <h1 className="text-3xl font-bold mb-6">{children}</h1>
+    ),
+    h2: ({ children }) => (
+      <h2 className="text-2xl font-semibold mb-4">{children}</h2>
+    ),
+    h3: ({ children }) => (
+      <h3 className="text-xl font-semibold mb-3">{children}</h3>
+    ),
+    p: ({ children }) => <p className="mb-4 text-gray-700">{children}</p>,
+    ul: ({ children }) => (
+      <ul className="list-disc list-inside mb-4 space-y-2">{children}</ul>
+    ),
+    ol: ({ children }) => (
+      <ol className="list-decimal list-inside mb-4 space-y-2">{children}</ol>
+    ),
+    li: ({ children }) => <li className="text-gray-700">{children}</li>,
+    img: ({ src, alt, ...props }) => (
+      <div className="relative h-64 my-8">
+        <Image
+          src={src || ''}
+          alt={alt || ''}
+          fill
+          className="object-cover rounded-lg"
+        />
+      </div>
+    ),
+    ...components,
+  }
+} 
