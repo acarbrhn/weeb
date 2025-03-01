@@ -64,92 +64,100 @@ export default function Header() {
       </div>
 
       {/* Ana Menü */}
-      <nav className="border-b">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-20 justify-between items-center">
-            {/* Logo */}
-            <div className="flex-shrink-0">
-              <Link href="/" className="flex items-center">
-                <img
-                  src="/images/logo.png"
-                  alt="Acar Tarım Logo"
-                  className="h-16 w-auto"
-                />
-              </Link>
-            </div>
-
-            {/* Desktop Menü */}
-            <div className="hidden md:flex md:space-x-8">
-              {navigation.map((item) => (
-                <div key={item.name} className="relative group">
-                  <Link
-                    href={item.href}
-                    className={`text-base font-medium ${
-                      pathname === item.href
-                        ? 'text-green-800'
-                        : 'text-gray-700 hover:text-green-800'
-                    } py-2`}
-                  >
-                    {item.name}
+      <Disclosure as="nav" className="border-b">
+        {({ open }) => (
+          <>
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div className="flex h-20 justify-between items-center">
+                {/* Logo */}
+                <div className="flex-shrink-0">
+                  <Link href="/" className="flex items-center">
+                    <img
+                      src="/images/logo.png"
+                      alt="Acar Tarım Logo"
+                      className="h-16 w-auto"
+                    />
                   </Link>
-                  {item.submenu && (
-                    <div className="absolute hidden group-hover:block w-48 bg-white shadow-lg mt-2 py-2 rounded-md">
-                      {item.submenu.map((subitem) => (
-                        <Link
-                          key={subitem.name}
-                          href={subitem.href}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-800"
-                        >
-                          {subitem.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
                 </div>
-              ))}
-            </div>
 
-            {/* Mobil Menü Butonu */}
-            <div className="md:hidden">
-              <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-green-800 hover:bg-green-50">
-                <span className="sr-only">Menüyü aç</span>
-                <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-              </Disclosure.Button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobil Menü */}
-        <Disclosure.Panel className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            {navigation.map((item) => (
-              <Fragment key={item.name}>
-                <Disclosure.Button
-                  as={Link}
-                  href={item.href}
-                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-green-800 hover:bg-green-50 rounded-md"
-                >
-                  {item.name}
-                </Disclosure.Button>
-                {item.submenu && (
-                  <div className="pl-4">
-                    {item.submenu.map((subitem) => (
-                      <Disclosure.Button
-                        key={subitem.name}
-                        as={Link}
-                        href={subitem.href}
-                        className="block px-3 py-2 text-sm font-medium text-gray-600 hover:text-green-800 hover:bg-green-50 rounded-md"
+                {/* Desktop Menü */}
+                <div className="hidden md:flex md:space-x-8">
+                  {navigation.map((item) => (
+                    <div key={item.name} className="relative group">
+                      <Link
+                        href={item.href}
+                        className={`text-base font-medium ${
+                          pathname === item.href
+                            ? 'text-green-800'
+                            : 'text-gray-700 hover:text-green-800'
+                        } py-2`}
                       >
-                        {subitem.name}
-                      </Disclosure.Button>
-                    ))}
-                  </div>
-                )}
-              </Fragment>
-            ))}
-          </div>
-        </Disclosure.Panel>
-      </nav>
+                        {item.name}
+                      </Link>
+                      {item.submenu && (
+                        <div className="absolute hidden group-hover:block w-48 bg-white shadow-lg mt-2 py-2 rounded-md">
+                          {item.submenu.map((subitem) => (
+                            <Link
+                              key={subitem.name}
+                              href={subitem.href}
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-800"
+                            >
+                              {subitem.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Mobil Menü Butonu */}
+                <div className="md:hidden">
+                  <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-green-800 hover:bg-green-50">
+                    <span className="sr-only">Menüyü aç</span>
+                    {open ? (
+                      <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                    ) : (
+                      <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+                    )}
+                  </Disclosure.Button>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobil Menü */}
+            <Disclosure.Panel className="md:hidden">
+              <div className="px-2 pt-2 pb-3 space-y-1">
+                {navigation.map((item) => (
+                  <Fragment key={item.name}>
+                    <Disclosure.Button
+                      as={Link}
+                      href={item.href}
+                      className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-green-800 hover:bg-green-50 rounded-md"
+                    >
+                      {item.name}
+                    </Disclosure.Button>
+                    {item.submenu && (
+                      <div className="pl-4">
+                        {item.submenu.map((subitem) => (
+                          <Disclosure.Button
+                            key={subitem.name}
+                            as={Link}
+                            href={subitem.href}
+                            className="block px-3 py-2 text-sm font-medium text-gray-600 hover:text-green-800 hover:bg-green-50 rounded-md"
+                          >
+                            {subitem.name}
+                          </Disclosure.Button>
+                        ))}
+                      </div>
+                    )}
+                  </Fragment>
+                ))}
+              </div>
+            </Disclosure.Panel>
+          </>
+        )}
+      </Disclosure>
     </header>
   )
 } 
