@@ -4,6 +4,7 @@ import { Fragment } from 'react'
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
 const navigation = [
@@ -28,8 +29,14 @@ export default function Header() {
             <div className="flex h-16 justify-between">
               <div className="flex">
                 <div className="flex flex-shrink-0 items-center">
-                  <Link href="/" className="text-xl font-bold text-green-600">
-                    ACAR TARIM
+                  <Link href="/" className="flex items-center">
+                    <Image
+                      src="/images/logo.png"
+                      alt="Acar Tarım Logo"
+                      width={150}
+                      height={40}
+                      className="h-10 w-auto"
+                    />
                   </Link>
                 </div>
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
