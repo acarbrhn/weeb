@@ -1,131 +1,202 @@
-import Image from "next/image";
-import Link from "next/link";
-import { SVGProps } from 'react';
+'use client'
+
+import Image from 'next/image'
+import Link from 'next/link'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 
 export default function Home() {
   return (
-    <div className="relative">
-      {/* Hero Section */}
-      <div className="relative h-[600px]">
-        <Image
-          src="/images/hero-bg.jpg"
-          alt="Hero Background"
-          fill
-          style={{ objectFit: 'cover' }}
-          priority
-        />
-        <div className="absolute inset-0 bg-black/50">
-          <div className="container mx-auto px-4 h-full flex items-center">
-            <div className="max-w-2xl text-white">
-              <h1 className="text-5xl font-bold mb-4">
-                Acar Tarım İşletmesi
-              </h1>
-              <p className="text-xl mb-8">
-                Sürdürülebilir tarım uygulamaları ve yenilikçi çözümlerle
-                geleceğin tarımını şekillendiriyoruz.
-              </p>
-              <Link
-                href="/urunler"
-                className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors"
-              >
-                Ürünlerimizi Keşfedin
-              </Link>
+    <main className="flex min-h-screen flex-col">
+      {/* Hero Slider */}
+      <section className="relative w-full h-[600px]">
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          navigation
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 5000 }}
+          className="w-full h-full"
+        >
+          <SwiperSlide>
+            <div className="relative w-full h-full">
+              <Image
+                src="/images/hero-bg.jpg"
+                alt="Slider 1"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                <div className="text-center text-white">
+                  <h1 className="text-4xl md:text-6xl font-bold mb-4">
+                    Doğal ve Sağlıklı Ürünler
+                  </h1>
+                  <p className="text-xl md:text-2xl mb-8">
+                    Acar Tarım kalitesiyle sofranıza geliyor
+                  </p>
+                  <Link
+                    href="/urunler"
+                    className="bg-green-800 text-white px-8 py-3 rounded-full hover:bg-green-700 transition"
+                  >
+                    Ürünlerimiz
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          {/* Diğer sliderlar için aynı yapı tekrarlanabilir */}
+        </Swiper>
+      </section>
+
+      {/* Ürün Kategorileri */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Ürün Kategorilerimiz</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden group">
+              <div className="relative h-64">
+                <Image
+                  src="/images/products/zeytinyagi.jpg"
+                  alt="Zeytinyağı"
+                  fill
+                  className="object-cover group-hover:scale-105 transition"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2">Zeytinyağı</h3>
+                <p className="text-gray-600 mb-4">
+                  Doğal ve sağlıklı zeytinyağlarımız
+                </p>
+                <Link
+                  href="/urunler/zeytinyagi"
+                  className="text-green-800 hover:text-green-700"
+                >
+                  İncele →
+                </Link>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden group">
+              <div className="relative h-64">
+                <Image
+                  src="/images/products/zeytin.jpg"
+                  alt="Zeytin"
+                  fill
+                  className="object-cover group-hover:scale-105 transition"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2">Zeytin</h3>
+                <p className="text-gray-600 mb-4">
+                  Taze ve lezzetli zeytinlerimiz
+                </p>
+                <Link
+                  href="/urunler/zeytin"
+                  className="text-green-800 hover:text-green-700"
+                >
+                  İncele →
+                </Link>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden group">
+              <div className="relative h-64">
+                <Image
+                  src="/images/products/buyukbas.jpg"
+                  alt="Büyükbaş Hayvancılık"
+                  fill
+                  className="object-cover group-hover:scale-105 transition"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2">Büyükbaş Hayvancılık</h3>
+                <p className="text-gray-600 mb-4">
+                  Kaliteli büyükbaş hayvan yetiştiriciliği
+                </p>
+                <Link
+                  href="/urunler/buyukbas"
+                  className="text-green-800 hover:text-green-700"
+                >
+                  İncele →
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Öne Çıkan Özellikler */}
-      <div className="py-16 bg-white">
+      {/* Hakkımızda Bölümü */}
+      <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Neden Bizi Tercih Etmelisiniz?
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className="p-6 border rounded-lg hover:shadow-lg transition-shadow"
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-6">Acar Tarım</h2>
+              <p className="text-gray-600 mb-6">
+                Yıllardır süregelen tecrübemiz ve modern tarım teknikleriyle,
+                kaliteli ve sağlıklı ürünler üretiyoruz. Müşteri memnuniyeti ve
+                sürdürülebilir tarım bizim için en önemli değerlerdir.
+              </p>
+              <Link
+                href="/hakkimizda"
+                className="inline-block bg-green-800 text-white px-6 py-3 rounded-full hover:bg-green-700 transition"
               >
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                  <feature.icon className="w-6 h-6 text-green-600" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </div>
-            ))}
+                Daha Fazla Bilgi
+              </Link>
+            </div>
+            <div className="relative h-[400px]">
+              <Image
+                src="/images/hero-bg.jpg"
+                alt="Hakkımızda"
+                fill
+                className="object-cover rounded-lg"
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  );
-}
+      </section>
 
-const features = [
-  {
-    title: 'Kaliteli Ürünler',
-    description: 'En yüksek kalite standartlarında üretilmiş tarım ürünleri.',
-    icon: function LeafIcon(props: SVGProps<SVGSVGElement>) {
-      return (
-        <svg
-          {...props}
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
-          />
-        </svg>
-      )
-    },
-  },
-  {
-    title: 'Sürdürülebilir Tarım',
-    description: 'Çevre dostu ve sürdürülebilir tarım uygulamaları.',
-    icon: function EarthIcon(props: SVGProps<SVGSVGElement>) {
-      return (
-        <svg
-          {...props}
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"
-          />
-        </svg>
-      )
-    },
-  },
-  {
-    title: 'Uzman Danışmanlık',
-    description: 'Profesyonel tarım danışmanlarımızla sürekli destek.',
-    icon: function UserIcon(props: SVGProps<SVGSVGElement>) {
-      return (
-        <svg
-          {...props}
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-          />
-        </svg>
-      )
-    },
-  },
-]
+      {/* İstatistikler */}
+      <section className="py-16 bg-green-800 text-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-4xl font-bold mb-2">25+</div>
+              <div className="text-lg">Yıllık Tecrübe</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold mb-2">1000+</div>
+              <div className="text-lg">Dönüm Arazi</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold mb-2">50+</div>
+              <div className="text-lg">Çalışan</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold mb-2">3000+</div>
+              <div className="text-lg">Mutlu Müşteri</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* İletişim CTA */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-6">Bizimle İletişime Geçin</h2>
+          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+            Ürünlerimiz, hizmetlerimiz veya işbirliği fırsatları hakkında
+            bilgi almak için bizimle iletişime geçebilirsiniz.
+          </p>
+          <Link
+            href="/iletisim"
+            className="inline-block bg-green-800 text-white px-8 py-3 rounded-full hover:bg-green-700 transition"
+          >
+            İletişim
+          </Link>
+        </div>
+      </section>
+    </main>
+  )
+}
