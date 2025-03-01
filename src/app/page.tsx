@@ -23,7 +23,7 @@ export default function Home() {
           <SwiperSlide>
             <div className="relative w-full h-full">
               <Image
-                src="/images/hero-bg.jpg"
+                src="/images/slider/slide1.jpg"
                 alt="Slider 1"
                 fill
                 className="object-cover"
@@ -46,7 +46,58 @@ export default function Home() {
               </div>
             </div>
           </SwiperSlide>
-          {/* Diğer sliderlar için aynı yapı tekrarlanabilir */}
+          <SwiperSlide>
+            <div className="relative w-full h-full">
+              <Image
+                src="/images/products/zeytinyagi.jpg"
+                alt="Slider 2"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                <div className="text-center text-white">
+                  <h1 className="text-4xl md:text-6xl font-bold mb-4">
+                    Kaliteli Zeytinyağı
+                  </h1>
+                  <p className="text-xl md:text-2xl mb-8">
+                    Doğal yöntemlerle üretilen zeytinyağlarımız
+                  </p>
+                  <Link
+                    href="/urunler/zeytinyagi"
+                    className="bg-green-800 text-white px-8 py-3 rounded-full hover:bg-green-700 transition"
+                  >
+                    İncele
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="relative w-full h-full">
+              <Image
+                src="/images/products/buyukbas.jpg"
+                alt="Slider 3"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                <div className="text-center text-white">
+                  <h1 className="text-4xl md:text-6xl font-bold mb-4">
+                    Büyükbaş Hayvancılık
+                  </h1>
+                  <p className="text-xl md:text-2xl mb-8">
+                    Modern tesislerimizde kaliteli üretim
+                  </p>
+                  <Link
+                    href="/urunler/buyukbas"
+                    className="bg-green-800 text-white px-8 py-3 rounded-full hover:bg-green-700 transition"
+                  >
+                    İncele
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
         </Swiper>
       </section>
 
