@@ -33,9 +33,10 @@ export default function Header() {
                     <Image
                       src="/images/logo.png"
                       alt="Acar Tarım Logo"
-                      width={150}
-                      height={40}
-                      className="h-10 w-auto"
+                      width={200}
+                      height={50}
+                      priority
+                      className="h-12 w-auto object-contain"
                     />
                   </Link>
                 </div>
