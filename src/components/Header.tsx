@@ -28,6 +28,14 @@ const navigation = [
       { name: 'BÜYÜKBAŞ', href: '/urunler/buyukbas' },
     ]
   },
+  { 
+    name: 'HİZMETLERİMİZ',
+    href: '/hizmetler',
+    submenu: [
+      { name: 'KURBANLIK SATIŞI', href: '/hizmetler/kurbanlik-satisi' },
+      { name: 'ARAZİ TESVİYE', href: '/hizmetler/arazi-tesviye' },
+    ]
+  },
   { name: 'İletişim', href: '/iletisim' },
 ]
 
