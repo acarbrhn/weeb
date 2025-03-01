@@ -1,5 +1,10 @@
 import { NextResponse } from 'next/server'
-import clientPromise from '@/lib/mongodb'
+import { MongoClient } from 'mongodb'
+
+const uri = process.env.MONGODB_URI || ''
+if (!uri) {
+  throw new Error('MONGODB_URI ortam değişkeni tanımlanmamış')
+}
 
 export async function POST(request: Request) {
   try {
@@ -7,7 +12,8 @@ export async function POST(request: Request) {
     const { name, email, phone, message } = body
 
     // MongoDB'ye bağlan
-    const client = await clientPromise
+    const client = new MongoClient(uri)
+    await client.connect()
     const db = client.db('weeb')
     const collection = db.collection('messages')
 
@@ -19,6 +25,8 @@ export async function POST(request: Request) {
       message,
       createdAt: new Date()
     })
+
+    await client.close()
 
     return NextResponse.json({
       success: true,
