@@ -68,14 +68,15 @@ export default function Header() {
         {({ open }) => (
           <>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div className="flex h-20 justify-between items-center">
+              <div className="flex h-28 justify-between items-center">
                 {/* Logo */}
-                <div className="flex-shrink-0">
+                <div className="flex-shrink-0 -mt-8">
                   <Link href="/" className="flex items-center">
                     <img
                       src="/images/logo.png"
                       alt="Acar Tarım Logo"
-                      className="h-16 w-auto"
+                      className="h-36 w-auto object-contain mix-blend-multiply"
+                      style={{ background: 'transparent' }}
                     />
                   </Link>
                 </div>
