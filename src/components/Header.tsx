@@ -30,13 +30,10 @@ export default function Header() {
               <div className="flex">
                 <div className="flex flex-shrink-0 items-center">
                   <Link href="/" className="flex items-center">
-                    <Image
+                    <img
                       src="/images/logo.png"
                       alt="Acar Tarım Logo"
-                      width={200}
-                      height={50}
-                      priority
-                      className="h-12 w-auto object-contain"
+                      className="h-12 w-auto"
                     />
                   </Link>
                 </div>
